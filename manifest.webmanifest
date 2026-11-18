@@ -1,0 +1,26 @@
+{
+  "name": "FITNEX · Nutrition & Training",
+  "short_name": "FITNEX",
+  "description": "Diario personale di nutrizione, schede e progressi. Funziona anche offline.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b1111",
+  "theme_color": "#0b1111",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "./fitnex-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./fitnex-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
