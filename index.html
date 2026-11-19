@@ -7,6 +7,7 @@
   <meta name="description" content="FITNEX — il tuo diario personale di nutrizione e allenamento. Traccia alimenti, serie, carichi e progressi.">
   <title>FITNEX · Nutrition & Training</title>
   <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./scanner.css">
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="FITNEX">
@@ -190,12 +191,12 @@ ${sectionIntro('Panoramica personale','Il tuo percorso, in chiaro.','Una dashboa
   <div class="span-5 panel panel-pad">${sectionHead('Il tuo workspace','Tutto sotto controllo')}<div class="data-row"><span class="entry-icon">${ico('book')}</span><div class="row-info"><div class="row-title">Schede allenamento</div><div class="row-detail">Crea Upper, Lower o qualsiasi tua routine</div></div><div class="row-value">${state.routines.length}</div></div><div class="data-row"><span class="entry-icon">${ico('chart')}</span><div class="row-info"><div class="row-title">Sessioni registrate</div><div class="row-detail">Storico dei tuoi esercizi</div></div><div class="row-value">${state.workouts.length}</div></div><div class="data-row"><span class="entry-icon">${ico('shield')}</span><div class="row-info"><div class="row-title">Salvataggio privato</div><div class="row-detail">Solo nel browser che stai usando</div></div><div class="row-value green-text">Locale</div></div></div>
 </div>`}
 function renderNutrition(){const day=view.nutritionDate,totals=foodTotals(day),goal=totalSettings('calories'),logs=state.foods.filter(f=>f.date===day);return `
-${sectionIntro('Fuel your progress','Nutrizione.','Aggiungi cibi, inserisci i grammi e visualizza calorie e macronutrienti.',`<div class="date-control">${ico('calendar')}<input type="date" id="nutritionDate" aria-label="Data del diario" value="${day}"></div><button class="btn primary" data-action="add-food">${ico('plus')} Nuovo alimento</button>`)}
+${sectionIntro('Fuel your progress','Nutrizione.','Aggiungi cibi, inserisci i grammi e visualizza calorie e macronutrienti.',`<div class="date-control">${ico('calendar')}<input type="date" id="nutritionDate" aria-label="Data del diario" value="${day}"></div><button class="btn" data-action="scan-food">${ico('camera')} Scanner AI</button><button class="btn primary" data-action="add-food">${ico('plus')} Nuovo alimento</button>`)}
 <div class="section-grid">
 <div class="span-12 nutrition-banner"><div><span class="meta-label">ENERGIA REGISTRATA · ${escapeHTML(shortDate(day))}</span><div class="nutrition-total">${fmt(totals.kcal)} <small>kcal</small></div><span class="tagline">${logs.length} ${logs.length===1?'alimento registrato':'alimenti registrati'}</span></div><div class="nutrition-bar-wrap"><div class="nutrition-bar-head"><span>Obiettivo giornaliero</span><span>${goal?`${fmt(goal)} kcal`:'Non impostato'}</span></div><div class="nutrition-bar"><span style="width:${pct(totals.kcal,goal)}%"></span></div><div class="subtle-note" style="margin-top:10px">${goal?'Obiettivo indicativo e modificabile nelle impostazioni.':'Puoi impostare un riferimento personale nelle impostazioni.'}</div></div></div>
 <div class="span-12">${statTiles(day)}</div>
 <div class="span-8 panel panel-pad">${sectionHead('Diario alimentare','I pasti della giornata',`<span class="muted-chip">${ico('calendar','sm')} ${escapeHTML(shortDate(day))}</span>`)}${MEALS.map(meal=>{const items=logs.filter(f=>f.meal===meal);return `<div class="meal-group"><div class="meal-head"><div class="meal-name"><span class="dot"></span>${meal}</div><span class="meal-kcal">${fmt(mealTotals(day,meal))} kcal</span></div><div class="meal-list">${items.length?items.slice().reverse().map(f=>foodRow(f,true)).join(''):`<div class="meal-empty">Nessun alimento registrato</div>`}</div></div>`}).join('')}</div>
-<div class="span-4"><div class="panel panel-pad" style="margin-bottom:17px">${sectionHead('Aggiunta rapida','Valori medi indicativi per 100 g')}<div class="quick-catalog">${['Mela (con buccia)','Banana','Riso bianco (cotto)','Petto di pollo (cotto)','Uovo intero (senza guscio)','Fiocchi d’avena (secchi)'].map(n=>`<button class="food-chip" data-action="add-food" data-food="${escapeHTML(n)}">${ico('plus')} ${escapeHTML(n)}</button>`).join('')}</div><p class="subtle-note" style="margin:15px 0 0">I valori cambiano per marca e preparazione. Se hai l'etichetta, usa i suoi numeri.</p></div><div class="panel panel-pad">${sectionHead('Foto del cibo','Per avere un diario anche visivo')}<div class="notice-box">${ico('camera')}<div>Puoi fotografare un alimento e allegare l'immagine alla registrazione. Il riconoscimento automatico con AI non è attivo in questa versione: sei tu a confermare alimento e grammi.</div></div><button class="btn full" style="margin-top:14px" data-action="add-food" data-photo="1">${ico('camera')} Aggiungi con foto</button></div></div>
+<div class="span-4"><div class="panel panel-pad" style="margin-bottom:17px">${sectionHead('Aggiunta rapida','Valori medi indicativi per 100 g')}<div class="quick-catalog">${['Mela (con buccia)','Banana','Riso bianco (cotto)','Petto di pollo (cotto)','Uovo intero (senza guscio)','Fiocchi d’avena (secchi)'].map(n=>`<button class="food-chip" data-action="add-food" data-food="${escapeHTML(n)}">${ico('plus')} ${escapeHTML(n)}</button>`).join('')}</div><p class="subtle-note" style="margin:15px 0 0">I valori cambiano per marca e preparazione. Se hai l'etichetta, usa i suoi numeri.</p></div><div class="panel panel-pad">${sectionHead('Foto del cibo','Per avere un diario anche visivo')}<div class="notice-box">${ico('camera')}<div>Puoi fotografare un alimento e allegare l'immagine alla registrazione. Il riconoscimento AI si può collegare tramite il tuo Cloudflare Worker. Puoi sempre correggere grammi e ingredienti.</div></div><button class="btn full primary" style="margin-top:14px" data-action="scan-food">${ico('camera')} Apri Food Scanner</button></div></div>
 </div>`}
 function renderWorkout(){const active=state.routines.find(r=>r.id===view.selectedRoutine)||state.routines[0];if(active)view.selectedRoutine=active.id;const sortedLogs=state.workouts.slice().sort(sessionDateSort).reverse();return `
 ${sectionIntro('Track every rep','Allenamento.','Crea le tue schede, registra serie e kg e controlla i progressi.',`<button class="btn" data-action="new-routine">${ico('plus')} Nuova scheda</button><button class="btn primary" data-action="log-work">${ico('dumbbell')} Registra esercizio</button>`)}
@@ -258,6 +259,7 @@ function handleAction(el){const action=el.dataset.action,id=el.dataset.id;
 switch(action){
 case 'navigate':go(el.dataset.page);break;
 case 'add-food':openFoodModal(null,el.dataset.food||'',el.dataset.photo==='1');break;
+case 'scan-food':window.FitnexScanner?.open();break;
 case 'edit-food':openFoodModal(id);break;
 case 'delete-food':{const f=state.foods.find(x=>x.id===id);if(f&&confirm(`Eliminare "${f.name}" dal diario?`)){state.foods=state.foods.filter(x=>x.id!==id);saveState();render();showToast('Alimento eliminato.')}break}
 case 'food-preset':applyFoodPreset(el.dataset.name);break;
@@ -286,6 +288,25 @@ document.addEventListener('submit',e=>{const form=e.target;if(!['foodForm','work
 document.addEventListener('input',e=>{const id=e.target.id;if(id==='foodSearch'){$('catalogResults').innerHTML=presetButtons(e.target.value)}if(['foodGrams','foodKcal','foodProtein','foodCarbs','foodFat'].includes(id))updateFoodPreview()});
 document.addEventListener('change',async e=>{if(e.target.id==='nutritionDate'){view.nutritionDate=e.target.value||TODAY();render()}if(e.target.id==='exerciseSelect'){view.selectedExercise=e.target.value;render()}if(e.target.id==='foodPhoto'){const file=e.target.files?.[0];if(!file)return;const label=$('photoLabel');if(label)label.textContent='Elaborazione foto...';try{const result=await compressPhoto(file);if(view.modal?.type!=='food')return;view.photo=result;const p=$('photoPreview');if(p)p.innerHTML=`<img src="${result}" alt="Foto alimento selezionata">`;if(label)label.textContent='Foto pronta da allegare'}catch(error){showToast(error.message||'Impossibile aprire la foto.');if(label)label.textContent='Foto non disponibile'}}if(e.target.id==='importInput'){await importBackup(e.target.files?.[0]);e.target.value=''}});
 $('themeSwitch').addEventListener('click',()=>{state.settings.theme=state.settings.theme==='light'?'dark':'light';saveState();render()});
+
+/* Scanner AI: add reviewed ingredients to existing FITNEX nutrition state, never replace records. */
+window.fitnexStoreScan=async function(entries,meta){
+ if(!Array.isArray(entries)||!entries.length||entries.length>8)return false;
+ const date=view.nutritionDate||TODAY(),meal=MEALS.includes(meta?.meal)?meta.meal:'Pranzo';
+ const data=entries.map(x=>({id:sid(),name:String(x.name).slice(0,85),grams:Number(x.grams),kcal:Number(x.kcal),protein:Number(x.protein),carbs:Number(x.carbs),fat:Number(x.fat),date,meal,photo:null}));
+ let thumb=null;
+ if(meta?.photo){try{
+ const blob=await (await fetch(meta.photo)).blob();
+ thumb=await compressPhoto(new File([blob],'scanner.jpg',{type:'image/jpeg'}));
+ }catch(err){console.warn('Miniatura scanner non salvabile:',err)}}
+ if(thumb)data[0].photo=thumb;
+ const before=state.foods.slice();
+ state.foods.push(...data);
+ if(!saveState()){state.foods=before;return false}
+ render();showToast(data.length===1?'Alimento salvato dal Food Scanner.':data.length+' ingredienti salvati nel diario.');
+ return true;
+};
+
 // Initial save locks migrated v1 records into the new storage key while preserving v1 backup.
 saveState();render();
 // Installazione offline: il Service Worker conserva i file dell'app sul dispositivo.
@@ -313,5 +334,6 @@ if('serviceWorker' in navigator && ['https:','http:'].includes(location.protocol
   if(label)label.textContent='APRIRE DA GITHUB PAGES PER OFFLINE';
 }
 </script>
+<script defer src="./scanner.js"></script>
 </body>
 </html>
