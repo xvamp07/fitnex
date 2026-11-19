@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="application-name" content="FITNEX">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230b1111'/%3E%3Cpath d='M16 16h32v8H24v9h20v8H24v12h-8z' fill='%23bafb76'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" href="./fitnex-192.png">
   <style>:root { font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color-scheme:dark; }
 *{box-sizing:border-box}
 body{--bg:#0b1111;--panel:#121b1a;--panel-strong:#16201f;--panel-soft:#0f1716;--border:#263431;--border-soft:#1d2a27;--text:#f2f5f0;--muted:#9baaa3;--dim:#75867e;--accent:#c3f773;--accent-ink:#14240e;--accent-dim:#34472a;--teal:#69c9a2;--orange:#ffbf82;--blue:#a4b9ff;--danger:#ffaaa0;--input:#0e1615;--overlay:rgba(1,8,7,.78);--shadow:0 18px 65px rgba(0,0,0,.17);margin:0;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
@@ -43,6 +43,14 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
 #networkDot.offline{background:#ffbf82;box-shadow:0 0 0 4px rgba(255,191,130,.16)}
 #connectionCaption{white-space:nowrap}
 @media (max-width:390px){#connectionCaption{font-size:9px;letter-spacing:.5px}}
+
+.brand-logo{width:47px;height:47px;object-fit:cover;border-radius:14px;border:1px solid rgba(187,255,108,.18);box-shadow:0 5px 22px rgba(0,0,0,.18);flex:none}
+.brand-box{gap:11px}
+.brand-word{font-family:Impact,'Arial Black','Segoe UI Black',system-ui,sans-serif;font-size:23px;line-height:1.04;font-weight:900;font-style:italic;letter-spacing:.25px;transform:skewX(-3deg);transform-origin:left center}
+.brand-caption{letter-spacing:2.15px;font-size:8px}
+.mobile-brand{align-items:center;gap:8px;font-family:Impact,'Arial Black',system-ui,sans-serif;font-weight:900;font-style:italic;letter-spacing:.2px}
+.mobile-brand img{border-radius:7px;vertical-align:middle}
+body[data-theme='light'] .brand-logo{border-color:#c8d7c4}
 </style>
 </head>
 <body data-theme="dark">
@@ -81,7 +89,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
 <div class="app-shell">
   <aside class="sidebar" aria-label="Navigazione principale">
     <div class="brand-box">
-      <div class="brand-symbol">F<span>•</span></div>
+      <img class="brand-logo" src="./fitnex-192.png" width="47" height="47" alt="Logo FITNEX, F verde e bilanciere">
       <div><div class="brand-word">FITNEX<span class="brand-dot">.</span></div><div class="brand-caption">PERFORMANCE OS</div></div>
     </div>
     <div class="sidebar-label">WORKSPACE</div>
@@ -91,7 +99,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
     <button class="privacy-foot" data-action="navigate" data-page="settings"><svg class="icon"><use href="#i-shield"></use></svg> Dati salvati sul dispositivo <svg class="icon tiny"><use href="#i-chevron"></use></svg></button>
   </aside>
   <div class="right-area">
-    <header class="topbar"><div class="topbar-left"><span class="status-orb" id="networkDot"></span><span class="topbar-caption" id="connectionCaption" aria-live="polite">CARICAMENTO FITNEX</span><span class="mobile-brand">FITNEX<span>.</span></span></div><div class="topbar-actions"><span id="todayTop" class="top-date"></span><button class="icon-button" id="themeSwitch" title="Cambia tema" aria-label="Cambia tema"><svg class="icon"><use href="#i-sun"></use></svg></button><span class="profile-chip">F</span></div></header>
+    <header class="topbar"><div class="topbar-left"><span class="status-orb" id="networkDot"></span><span class="topbar-caption" id="connectionCaption" aria-live="polite">CARICAMENTO FITNEX</span><span class="mobile-brand"><img src="./fitnex-192.png" alt="" width="26" height="26"> FITNEX<span>.</span></span></div><div class="topbar-actions"><span id="todayTop" class="top-date"></span><button class="icon-button" id="themeSwitch" title="Cambia tema" aria-label="Cambia tema"><svg class="icon"><use href="#i-sun"></use></svg></button><span class="profile-chip">F</span></div></header>
     <main id="mainContent" class="page-content" aria-live="polite"></main>
     <footer class="app-footer">FITNEX <span>v2.1 offline</span><span class="footer-sep">·</span> Sviluppato per il tuo percorso, non per vendere abbonamenti.</footer>
   </div>

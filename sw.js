@@ -1,6 +1,6 @@
-/* FITNEX offline v2.1 — files cached for https://<user>.github.io/fitnex/ */
+/* FITNEX offline v3 branding — files cached for https://<user>.github.io/fitnex/ */
 'use strict';
-const CACHE_NAME='fitnex-app-shell-v2.1.1';
+const CACHE_NAME='fitnex-app-shell-v3.0.1';
 const CACHE_PREFIX='fitnex-app-shell-';
 const ROOT=self.registration.scope;
 const ABS=path=>new URL(path,ROOT).href;
