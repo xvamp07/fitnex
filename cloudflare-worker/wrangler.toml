@@ -4,3 +4,12 @@ compatibility_date = "2026-11-19"
 
 [ai]
 binding = "AI"
+
+# Approximate shared rate limiting; not authentication or a global spending limit.
+[[ratelimits]]
+name = "SCAN_RATE_LIMITER"
+namespace_id = "1001"
+
+[ratelimits.simple]
+limit = 3
+period = 60

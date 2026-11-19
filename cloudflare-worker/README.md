@@ -27,3 +27,7 @@ The scanner UI is already in the FITNEX PWA. Real food recognition is only enabl
 POST `/scan`, JSON body: `{ "image": "data:image/jpeg;base64,..." }`. Response: `{"items":[{"name":"Mela","grams":150,"kcal":52,"protein":0.3,"carbs":13.8,"fat":0.2}]}`.
 
 Only `https://xvamp07.github.io` is allowed as browser Origin (modify `ORIGIN` if you change the GitHub Pages address).
+
+## Limite di scansioni
+
+Il Worker usa il binding SCAN_RATE_LIMITER configurato nel file wrangler.toml: circa 3 richieste al minuto per punto Cloudflare. E un limite approssimativo, non autentica gli utenti e non garantisce un tetto globale di spesa. Controlla le quote Workers AI e aggiungi protezioni prima di condividerlo pubblicamente.

@@ -15,6 +15,9 @@ async fetch(request,env){
  if(new URL(request.url).pathname!=='/scan')return json({error:'Percorso non trovato.'},404,origin);
  if(origin!==ORIGIN)return json({error:'Origine non autorizzata.'},403,origin);
  if(!env.AI)return json({error:'Manca il binding AI del Worker.'},503,origin);
+ if(!env.SCAN_RATE_LIMITER)return json({error:'Manca il limite di scansioni del Worker.'},503,origin);
+ const rate=await env.SCAN_RATE_LIMITER.limit({key:'fitnex-public-scan'});
+ if(!rate.success)return json({error:'Limite scansioni raggiunto. Riprova fra un minuto.'},429,origin);
  const len=Number(request.headers.get('content-length')||0);
  if(len>1600000)return json({error:'Immagine troppo grande.'},413,origin);
  let body;
@@ -39,7 +42,7 @@ async fetch(request,env){
  if(!items.length)return json({items:[],warning:'Nessun alimento riconosciuto con sufficiente struttura.'},200,origin);
  return json({items,notice:'Grammi e nutrienti sono stime non verificate.'},200,origin);
  }catch(e){
- console.error('AI request failure',String(e?.message||e));
+ console.error('AI request failure',String(e?.name||'WorkerError'));
  return json({error:'Analisi non disponibile. Controlla configurazione del modello, quota e licenza Cloudflare.'},502,origin);
  }
 }
