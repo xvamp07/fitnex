@@ -1,0 +1,204 @@
+/* FITNEX v3.3 — Design B: Clean Premium. Layout closely follows selected mobile mockup. */
+:root{color-scheme:dark}
+body[data-theme="dark"]{
+ --bg:#151716;--panel:#282b29;--panel-strong:#303431;--panel-soft:#1b1e1c;
+ --border:#444945;--border-soft:#333835;--text:#f5f5f0;--muted:#bcbfba;
+ --dim:#909991;--accent:#b8d9a5;--accent-ink:#1d2c21;--accent-dim:#374638;
+ --teal:#95b99b;--blue:#cbd4bf;--orange:#e5cfb9;--input:#202421;
+ --shadow:0 14px 36px rgba(0,0,0,.13);
+}
+html{background:#151716;color-scheme:dark}
+body[data-theme="dark"]{background:#151716}
+body[data-theme="dark"]::before{opacity:.58;background:
+radial-gradient(ellipse 52% 38% at 83% 9%,rgba(132,158,139,.15),transparent 72%),
+radial-gradient(ellipse 39% 29% at 10% 63%,rgba(120,145,121,.08),transparent 70%);
+animation:bSoftLight 32s ease-in-out infinite alternate}
+@keyframes bSoftLight{0%{transform:translate(-2%,0) scale(1)}100%{transform:translate(3%,1%) scale(1.07)}}
+.sidebar{background:#1b1f1d;border-right-color:#353b37}
+.brand-word{font:800 23px/1.1 'Manrope','DM Sans',sans-serif;letter-spacing:1.1px;transform:none;font-style:normal}
+.brand-caption{font-size:9px;color:#b2bfb0;letter-spacing:1.5px}
+.topbar{background:rgba(23,26,24,.93);border-bottom:1px solid rgba(242,249,231,.06);backdrop-filter:blur(12px)}
+.panel,.stat-tile{background:var(--panel);border:1px solid var(--border)}
+.nav-item.active{background:#2b372e;border-color:#425348}
+.b-dashboard{position:relative;isolation:isolate;max-width:1150px;margin:0 auto}
+.b-dashboard:before{content:"";pointer-events:none;position:absolute;z-index:-1;left:18%;right:-6%;top:-48px;height:320px;opacity:.54;
+background:linear-gradient(155deg,transparent 10%,rgba(121,130,124,.11) 38%,rgba(92,103,95,.03) 80%);
+clip-path:polygon(0 100%,16% 67%,33% 82%,47% 50%,59% 58%,83% 15%,100% 3%,100% 100%)}
+.b-welcome{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 20px}
+.b-welcome-person{display:flex;align-items:center;gap:13px;min-width:0}
+.b-avatar{display:grid;place-items:center;flex:0 0 auto;width:55px;height:55px;border-radius:50%;border:2px solid #66786b;background:#303735;box-shadow:0 4px 18px rgba(0,0,0,.2);overflow:hidden}
+.b-avatar img{width:100%;height:100%;object-fit:cover}
+.b-hello-small{font-size:14px;font-weight:500;color:#d5d9d2;line-height:1.4}
+.b-hello-name{font:800 clamp(23px,3vw,32px)/1.1 'Manrope',sans-serif;letter-spacing:-1px;margin:3px 0;color:#f9faf5}
+.b-welcome .b-date{font-size:12px;letter-spacing:.4px;color:#acb8ad;white-space:nowrap}
+.b-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:17px}
+.b-card{min-width:0;background:linear-gradient(135deg,#2d302e,#232625);border:1px solid rgba(232,241,226,.16);box-shadow:0 14px 36px rgba(0,0,0,.17);border-radius:22px;overflow:hidden}
+.b-calories{grid-column:span 6;min-height:194px;padding:24px 26px}
+.b-macros{grid-column:span 6;min-height:194px;padding:22px 24px}
+.b-eyebrow{display:flex;align-items:center;gap:11px;color:#ebf0e9;font-size:12px;font-weight:700;letter-spacing:2.1px}
+.b-eyebrow .icon{width:22px;height:22px;color:#c7e2b7}
+.b-calories-body{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.b-number-line{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.b-calories-num{font:800 clamp(34px,4.1vw,53px)/1 'Manrope',system-ui,sans-serif;letter-spacing:-2.5px;color:#fafbf6}
+.b-calories-goal{font-size:17px;color:#b5b9b2}
+.b-remaining{border-left:1px solid rgba(238,239,234,.23);padding-left:24px;flex:0 0 auto;min-width:155px}
+.b-remaining span{display:block;color:#e1e5dc;font-size:13px}
+.b-remaining strong{display:block;color:#c0ddb3;font-size:27px;line-height:1.4;font-weight:800}
+.b-remaining strong small{font-size:13px;color:#f1f2ed}
+.b-calories-bottom{display:flex;align-items:center;gap:13px;margin-top:17px}
+.b-calories-track,.b-macro-track{height:11px;border-radius:99px;overflow:hidden;background:#424743;flex:1;min-width:0}
+.b-calories-track>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#e0efc2,#92c98b)}
+.b-calories-bottom>strong{font-size:12px;color:#e0e2dc;min-width:40px;text-align:right}
+.b-macros-core{display:grid;grid-template-columns:155px 1fr;align-items:center;gap:21px;margin-top:18px}
+.b-donut{width:145px;max-width:100%;aspect-ratio:1;position:relative;display:grid;place-items:center;border-radius:50%;background:conic-gradient(from 0deg,#9bb998 0%,#cee9ab calc(var(--percent)*.86),#e9e7df calc(var(--percent)*.86),#e9e7df var(--percent),#464d47 var(--percent),#464d47 100%)}
+.b-donut:before{content:"";position:absolute;inset:17px;border-radius:50%;background:#282c29;box-shadow:inset 0 0 14px rgba(0,0,0,.13)}
+.b-donut-center{position:relative;text-align:center}
+.b-donut-center strong{display:block;font-size:25px;line-height:1.15;color:#fbfcf6;letter-spacing:-1px;font-weight:800}
+.b-donut-center small{display:block;color:#e1e4dc;font-size:12px;margin-top:3px}
+.b-macro-list{display:flex;flex-direction:column;gap:12px;min-width:0}
+.b-macro-info{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:13px;white-space:nowrap}
+.b-macro-name{display:flex;align-items:center;gap:8px;color:#f2f4ef;font-weight:600}
+.b-macro-dot{display:inline-block;width:11px;height:11px;border-radius:50%;background:#96b89b}
+.b-macro-dot.carbs{background:#cde5a9}
+.b-macro-dot.fat{background:#e4e2d9}
+.b-macro-value{font-size:12px;color:#d2d4cd}
+.b-macro-track{height:7px;margin-top:6px;background:#454a46}
+.b-macro-track>span{display:block;height:100%;border-radius:99px;background:#9fbfa2}
+.b-macro-row.carbs .b-macro-track>span{background:#d0e6ad}
+.b-macro-row.fat .b-macro-track>span{background:#e1dfd5}
+.b-scan{grid-column:span 12;display:flex;align-items:center;justify-content:center;gap:16px;position:relative;min-height:79px;border-radius:22px;background:linear-gradient(115deg,#e8f0d9,#fafaf2 48%,#e3eddb);color:#1d291d;border:1px solid rgba(255,255,255,.5);font:800 clamp(17px,2vw,23px) 'Manrope',system-ui,sans-serif;box-shadow:inset 0 1px 0 rgba(255,255,255,.7),0 11px 30px rgba(0,0,0,.12);cursor:pointer;transition:transform .2s,filter .2s}
+.b-scan:hover{filter:brightness(1.035);transform:translateY(-2px)}
+.b-scan .icon{width:31px;height:31px;color:#19291c}
+.b-scan .b-arrow{position:absolute;right:24px;font-size:27px;font-weight:400}
+.b-workout{grid-column:span 5;position:relative;min-height:210px;padding:25px 26px}
+.b-athlete{position:absolute;inset:auto 0 0 auto;height:100%;width:51%;background:linear-gradient(90deg,#292c2a 0%,rgba(41,44,42,.04) 48%),url('./fitnex-b-athlete-mini.jpg') center right/cover no-repeat;opacity:.88;filter:grayscale(.3)}
+.b-workout-content{position:relative;z-index:1;max-width:72%}
+.b-workout-figure{font-size:40px;line-height:1.12;color:#f9faf6;font-weight:800;letter-spacing:-1.5px;margin:20px 0 2px}
+.b-workout-figure span{color:#b2d0a5}
+.b-workout-text{font-size:13px;color:#d1d5cd}
+.b-dots{display:flex;gap:8px;margin-top:19px;max-width:235px}
+.b-dots i{display:block;flex:1;min-width:0;height:10px;border-radius:99px;background:#525654}
+.b-dots i.on{background:linear-gradient(90deg,#c5e5ab,#8ebd83)}
+.b-workout-nav{position:absolute;right:15px;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;background:rgba(73,77,75,.78);border:0;color:#fff;font-size:27px;z-index:2;cursor:pointer}
+.b-weekly{grid-column:span 7;background:#f2f2eb;border:1px solid #e9e9e1;color:#252b26;min-height:210px;padding:22px 23px}
+.b-weekly-header{display:flex;align-items:center;justify-content:space-between;gap:13px}
+.b-weekly-label{display:flex;align-items:center;gap:11px;font-size:13px;font-weight:900;letter-spacing:1.8px;color:#292f2a}
+.b-weekly-label .icon{color:#41483f}
+.b-weekly-avg{display:flex;align-items:baseline;gap:8px;font-size:12px;color:#656a60;white-space:nowrap}
+.b-weekly-avg strong{font-size:15px;color:#405b3c}
+.b-weekly-plot{display:flex;gap:12px;margin-top:21px;align-items:stretch}
+.b-weekly-axis{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;width:44px;flex:0 0 44px;font-size:10px;color:#6f756e;padding-bottom:22px}
+.b-weekly-chart{height:124px;flex:1;position:relative;min-width:0;display:flex;align-items:flex-end;gap:7px;padding:0 1px 20px}
+.b-weekly-chart:before{content:"";pointer-events:none;position:absolute;inset:0 0 20px 0;background:repeating-linear-gradient(to top,#daddd3 0px,#daddd3 1px,transparent 1px,transparent 25%);opacity:.85}
+.b-weekly-chart:after{content:"";pointer-events:none;position:absolute;left:0;right:0;top:52%;border-top:1px dashed rgba(88,115,85,.6)}
+.b-weekly-col{height:100%;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:1;align-items:stretch}
+.b-weekly-col .b-column{border-radius:7px 7px 0 0;width:75%;max-width:62px;margin:0 auto;background:linear-gradient(to top,#bdcfae,#6c926a);height:var(--height);min-height:3px;opacity:.95}
+.b-weekly-col.no-data .b-column{height:3px;background:#e4e6de;opacity:.8;min-height:3px}
+.b-weekly-col .b-column-day{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);font-size:11px;color:#5a6059;font-weight:600;white-space:nowrap}
+.b-weekly-foot{margin-top:13px;font-size:10px;color:#6a716a}
+.b-below{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:20px}
+.b-below .panel{min-width:0}
+.b-below .panel-title{font-size:15px}
+.b-below .panel-header{flex-wrap:wrap}
+body[data-theme='light'] .b-welcome .b-hello-name{color:#253a2b}
+body[data-theme='light'] .b-welcome .b-hello-small{color:#5d705f}
+body[data-theme='light'] .b-dashboard:before{opacity:.18}
+body[data-theme='light'] .b-card:not(.b-weekly){background:#f0f2ec;border-color:#dae2d7}
+body[data-theme='light'] .b-eyebrow,body[data-theme='light'] .b-calories-num,body[data-theme='light'] .b-donut-center strong,body[data-theme='light'] .b-macro-name,body[data-theme='light'] .b-workout-figure{color:#233429}
+body[data-theme='light'] .b-calories-goal,body[data-theme='light'] .b-remaining span,body[data-theme='light'] .b-macro-value,body[data-theme='light'] .b-workout-text{color:#647267}
+body[data-theme='light'] .b-donut:before{background:#f0f2ec}
+body[data-theme='light'] .b-workout{background:#2c302d!important}
+body[data-theme='light'] .b-workout .b-eyebrow,body[data-theme='light'] .b-workout .b-workout-figure{color:#f7f8f4}
+body[data-theme='light'] .b-workout .b-workout-text{color:#d0d4cd}
+@media(max-width:1100px){.b-macros-core{grid-template-columns:120px 1fr;gap:15px}.b-donut{width:120px}.b-donut:before{inset:13px}.b-macro-info{font-size:12px}.b-calories{padding:23px}.b-macros{padding:21px}}
+@media(max-width:860px){.b-calories,.b-macros,.b-workout,.b-weekly{grid-column:span 12}.b-workout{min-height:176px}.b-below{grid-template-columns:1fr 1fr}.b-donut{width:135px}.b-macros-core{grid-template-columns:140px 1fr}}
+@media(max-width:590px){
+ .sidebar{display:none}
+ .topbar{position:relative;min-height:76px;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+ .topbar .topbar-left .status-orb,.topbar .topbar-left .topbar-caption{position:absolute;left:-9999px}
+ .mobile-brand{display:flex;align-items:center;gap:0;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:800 25px/1 'Manrope',system-ui,sans-serif;letter-spacing:2px;color:#f6f6ee}
+ .mobile-brand img{display:none}
+ .topbar .topbar-actions{display:contents}
+ .topbar .top-date{display:none}
+ .topbar #themeSwitch{position:absolute;right:18px;top:19px;background:#2e332f;border:1px solid #3f4541;border-radius:50%;height:38px;width:38px}
+ .topbar .profile-chip{position:absolute;left:18px;top:18px;width:40px;height:40px;border-radius:50%;background:#313b32;border:1.5px solid #688269;color:#d4edd0}
+ .page-content{padding:13px 17px calc(102px + env(safe-area-inset-bottom))}
+ .b-welcome{margin:9px 0 21px}
+ .b-hello-small{font-size:13px}
+ .b-hello-name{font-size:25px}
+ .b-avatar{display:none}
+ .b-welcome .b-date{display:none}
+ .b-grid{gap:13px}
+ .b-card{border-radius:21px}
+ .b-calories{min-height:160px;padding:19px 20px}
+ .b-macros{min-height:181px;padding:20px}
+ .b-eyebrow{font-size:11px;letter-spacing:1.75px;gap:9px}
+ .b-eyebrow .icon{width:20px;height:20px}
+ .b-calories-body{margin-top:16px;gap:10px}
+ .b-calories-num{font-size:35px;letter-spacing:-1.5px}
+ .b-calories-goal{font-size:12px}
+ .b-remaining{min-width:104px;padding-left:12px}
+ .b-remaining span{font-size:11px}
+ .b-remaining strong{font-size:23px}
+ .b-remaining strong small{font-size:11px}
+ .b-calories-bottom{margin-top:16px;gap:9px}
+ .b-calories-track{height:9px}
+ .b-macros-core{grid-template-columns:112px minmax(0,1fr);gap:15px;margin-top:15px}
+ .b-donut{width:112px}
+ .b-donut:before{inset:13px}
+ .b-donut-center strong{font-size:20px}
+ .b-donut-center small{font-size:11px}
+ .b-macro-list{gap:9px}
+ .b-macro-info{gap:5px;font-size:11px}
+ .b-macro-name{gap:5px}
+ .b-macro-dot{width:8px;height:8px}
+ .b-macro-value{font-size:10px}
+ .b-macro-track{height:5px;margin-top:5px}
+ .b-scan{min-height:66px;border-radius:23px;font-size:18px}
+ .b-scan .icon{width:26px;height:26px}
+ .b-scan .b-arrow{right:16px;font-size:23px}
+ .b-workout{min-height:155px;padding:20px}
+ .b-workout .b-eyebrow{font-size:10px}
+ .b-workout-content{max-width:74%}
+ .b-workout-figure{font-size:34px;margin:13px 0 1px}
+ .b-workout-text{font-size:12px}
+ .b-dots{margin-top:12px;gap:5px}
+ .b-dots i{height:9px}
+ .b-athlete{width:47%}
+ .b-workout-nav{right:12px;width:32px;height:32px;font-size:23px}
+ .b-weekly{min-height:208px;padding:20px 16px}
+ .b-weekly-label{font-size:11px;letter-spacing:1.2px;gap:8px}
+ .b-weekly-label .icon{width:17px;height:17px}
+ .b-weekly-avg{flex-direction:column;gap:0;text-align:right;font-size:10px}
+ .b-weekly-avg strong{font-size:12px}
+ .b-weekly-plot{margin-top:15px;gap:7px}
+ .b-weekly-axis{width:28px;flex-basis:28px;font-size:9px}
+ .b-weekly-chart{gap:3px}
+ .b-weekly-col .b-column{width:78%}
+ .b-weekly-col .b-column-day{font-size:10px}
+ .b-weekly-foot{font-size:10px}
+ .b-below{grid-template-columns:1fr;margin-top:15px;gap:12px}
+ .mobile-nav{height:calc(72px + env(safe-area-inset-bottom));border-radius:22px 22px 0 0;background:#242726!important;border-top:1px solid #343934;box-shadow:0 -10px 24px rgba(0,0,0,.16);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+ .mobile-nav button{font-size:10px;font-weight:600;gap:5px;border-radius:14px}
+ .mobile-nav button.active{color:#c5e5b1;background:transparent}
+ .mobile-nav .icon{width:23px;height:23px}
+}
+@media(max-width:370px){.b-macros-core{grid-template-columns:93px minmax(0,1fr);gap:11px}.b-donut{width:93px}.b-donut:before{inset:12px}.b-calories-num{font-size:30px}.b-calories-goal{font-size:11px}.b-remaining{min-width:89px;padding-left:9px}.b-remaining strong{font-size:19px}.b-macro-value{font-size:9px}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none!important}.b-scan{transition:none!important}}
+
+/* Selected B finishing details */
+.b-analytics-link{font:800 11px 'DM Sans',sans-serif;background:transparent;border:0;color:#497447;padding:2px 0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.b-weekly-foot{line-height:1.4}
+.b-dashboard .b-eyebrow .icon{stroke-width:1.8}
+.b-workout .b-eyebrow{position:relative;z-index:2}
+.b-weekly-chart:after{display:none}
+body[data-theme="light"] .b-welcome .b-hello-name{color:#263729}
+@media(max-width:590px){
+.topbar .profile-chip{display:none}
+.b-avatar{display:grid}
+.b-welcome-person{gap:12px}
+.b-welcome{margin-top:9px}
+.b-hello-name{font-size:24px}
+.b-dashboard{width:100%}
+.b-calories-goal{white-space:nowrap}
+}

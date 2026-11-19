@@ -54,6 +54,7 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{
 .mobile-brand img{border-radius:7px;vertical-align:middle}
 body[data-theme='light'] .brand-logo{border-color:#c8d7c4}
 </style>
+<link rel="stylesheet" href="./design-b.css">
 </head>
 <body data-theme="dark">
 <svg class="svg-sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
@@ -87,6 +88,7 @@ body[data-theme='light'] .brand-logo{border-color:#c8d7c4}
   <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v12H3Z"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m6 6-6-6 6-6"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 2-9 5 9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></symbol>
 </svg>
 <div class="app-shell">
   <aside class="sidebar" aria-label="Navigazione principale">
@@ -103,7 +105,7 @@ body[data-theme='light'] .brand-logo{border-color:#c8d7c4}
   <div class="right-area">
     <header class="topbar"><div class="topbar-left"><span class="status-orb" id="networkDot"></span><span class="topbar-caption" id="connectionCaption" aria-live="polite">CARICAMENTO FITNEX</span><span class="mobile-brand"><img src="./fitnex-192.png" alt="" width="26" height="26"> FITNEX<span>.</span></span></div><div class="topbar-actions"><span id="todayTop" class="top-date"></span><button class="icon-button" id="themeSwitch" title="Cambia tema" aria-label="Cambia tema"><svg class="icon"><use href="#i-sun"></use></svg></button><span class="profile-chip">F</span></div></header>
     <main id="mainContent" class="page-content" aria-live="polite"></main>
-    <footer class="app-footer">FITNEX <span>v2.1 offline</span><span class="footer-sep">·</span> Sviluppato per il tuo percorso, non per vendere abbonamenti.</footer>
+    <footer class="app-footer">FITNEX <span>v3.3 · Clean Premium B</span><span class="footer-sep">·</span> Sviluppato per il tuo percorso, non per vendere abbonamenti.</footer>
   </div>
 </div>
 <nav id="mobileNav" class="mobile-nav" aria-label="Navigazione mobile"></nav>
@@ -166,7 +168,7 @@ function totalSettings(k){const x=state.settings[k];return Number.isFinite(+x)&&
 function pct(n,target){return target?Math.max(0,Math.min(100,num(n)/target*100)):0}
 function emptyState(iconName,title,desc,button){return `<div class="empty-state"><div class="icon-circle">${ico(iconName)}</div><strong>${escapeHTML(title)}</strong><p>${escapeHTML(desc)}</p>${button||''}</div>`}
 function sectionHead(title,subtitle='',right=''){return `<div class="panel-header"><div><h2 class="panel-title">${title}</h2>${subtitle?`<p class="panel-subtitle">${subtitle}</p>`:''}</div>${right}</div>`}
-const navItems=[['overview','grid','Dashboard'],['nutrition','apple','Nutrizione'],['workout','dumbbell','Allenamento'],['analytics','chart','Analisi'],['settings','settings','Impostazioni']];
+const navItems=[['overview','grid','Home'],['nutrition','apple','Nutrizione'],['workout','dumbbell','Allenamento'],['analytics','chart','Analisi'],['settings','settings','Impostazioni']];
 function renderNav(){const items=navItems.map(([page,i,label])=>`<button class="nav-item ${page===view.page?'active':''}" data-action="navigate" data-page="${page}" aria-current="${page===view.page?'page':'false'}">${ico(i)}<span>${label}</span></button>`).join('');$('sideNav').innerHTML=items; $('mobileNav').innerHTML=navItems.map(([page,i,label])=>`<button class="${page===view.page?'active':''}" data-action="navigate" data-page="${page}" aria-label="${label}">${ico(i)}<span>${label}</span></button>`).join('')}
 function render(){document.body.dataset.theme=state.settings.theme==='light'?'light':'dark';$('todayTop').textContent=fullDate(TODAY());$('themeSwitch').innerHTML=ico(state.settings.theme==='dark'?'sun':'moon');renderNav();const main=$('mainContent');main.innerHTML=({overview:renderOverview,nutrition:renderNutrition,workout:renderWorkout,analytics:renderAnalytics,settings:renderSettings}[view.page]||renderOverview)()}
 function go(page){if(!navItems.some(x=>x[0]===page))return;view.page=page;render();window.scrollTo({top:0,behavior:'instant'})}
@@ -341,5 +343,6 @@ if('serviceWorker' in navigator && ['https:','http:'].includes(location.protocol
 }
 </script>
 <script defer src="./scanner.js"></script>
+<script defer src="./design-b.js"></script>
 </body>
 </html>
