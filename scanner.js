@@ -59,12 +59,13 @@ function draw(){el('fxscan-results').classList.remove('fxscan-hide');el('fxscan-
 return '<div class="fxscan-item" data-ix="'+i+'"><div class="fxscan-item-top"><input class="fxscan-input" aria-label="Nome alimento" maxlength="85" data-field="name" value="'+esc(item.name)+'" placeholder="Alimento"><button type="button" class="fxscan-btn danger" data-remove="'+i+'">✕</button></div><div class="fxscan-item-meta">'+[['grams','Grammi'],['kcal','kcal/100g'],['protein','Proteine/100g'],['carbs','Carbo/100g'],['fat','Grassi/100g']].map(function(entry){return '<label><span class="fxscan-label">'+entry[1]+'</span><input class="fxscan-input" type="number" min="0" step="any" data-field="'+entry[0]+'" value="'+(Number(item[entry[0]])||0)+'"></label>'}).join('')+'</div><div class="fxscan-item-kcal" id="fxscan-kcal-'+i+'"></div></div>'
 }).join('');total()}
 function total(){var sum=0;items.forEach(function(x,i){var k=Math.max(0,+x.grams||0)*Math.max(0,+x.kcal||0)/100;sum+=k;if(el('fxscan-kcal-'+i))el('fxscan-kcal-'+i).textContent=Math.round(k)+' kcal stimate'});el('fxscan-total').textContent=Math.round(sum)+' kcal stimate'}
-function save(){
+async function save(){
 if(!items.length)return say('Aggiungi almeno un ingrediente.',true);
 for(var x of items){if(!x.name.trim()||![x.grams,x.kcal,x.protein,x.carbs,x.fat].every(function(n){return Number.isFinite(n)&&n>=0})||x.grams<=0||x.grams>20000||x.kcal>1000||x.protein>100||x.carbs>100||x.fat>100)return say('Controlla i valori: grammi positivi e numeri validi per 100 g.',true)}
 if(typeof window.fitnexStoreScan!=='function')return say('Salvataggio non pronto: ricarica FITNEX.',true);
-var ok=window.fitnexStoreScan(items.map(function(x){return {...x,name:x.name.trim()}}),{photo:photo,meal:el('fxscan-meal').value});
-if(ok){dismiss()}else say('Memoria locale piena. Esporta un backup prima di continuare.',true)
+busy=true;el('fxscan-save').disabled=true;
+try{var ok=await window.fitnexStoreScan(items.map(function(x){return {...x,name:x.name.trim()}}),{photo:photo,meal:el('fxscan-meal').value});
+if(ok){busy=false;dismiss()}else say('Memoria locale piena. Esporta un backup prima di continuare.',true)}catch(err){say('Non è stato possibile salvare nel diario: '+String(err.message||err),true)}finally{busy=false;var btn=el('fxscan-save');if(btn)btn.disabled=false}
 }
 window.FitnexScanner={open:open};
 })();
