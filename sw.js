@@ -1,11 +1,11 @@
 /* FITNEX offline v3.1 scanner — files cached for https://<user>.github.io/fitnex/ */
 'use strict';
-const CACHE_NAME='fitnex-app-shell-v3.3-design-b';
+const CACHE_NAME='fitnex-app-shell-v3.4-favorites-insights';
 const CACHE_PREFIX='fitnex-app-shell-';
 const ROOT=self.registration.scope;
 const ABS=path=>new URL(path,ROOT).href;
 const INDEX=ABS('index.html');
-const FILES=['./','./index.html','./manifest.webmanifest','./fitnex-192.png','./fitnex-512.png','./apple-touch-icon.png','./scanner.css','./scanner.js','./clean-premium.css','./design-b.css','./design-b.js','./fitnex-b-athlete-mini.jpg'].map(ABS);
+const FILES=['./','./index.html','./manifest.webmanifest','./fitnex-192.png','./fitnex-512.png','./apple-touch-icon.png','./scanner.css','./scanner.js','./clean-premium.css','./design-b.css','./design-b.js','./fitnex-b-athlete-mini.jpg','./fitnex-extras.js','./fitnex-extras.css'].map(ABS);
 self.addEventListener('install',event=>{
   event.waitUntil((async()=>{
     const cache=await caches.open(CACHE_NAME);

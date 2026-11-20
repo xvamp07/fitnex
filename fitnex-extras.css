@@ -1,0 +1,45 @@
+/* FITNEX v3.4 — reusable meals and 30-day insights, Clean Premium B */
+.fxmeal-section{border:1px solid var(--border);background:var(--panel);border-radius:22px;padding:22px 24px;box-shadow:var(--shadow)}
+.fxmeal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.fxmeal-title{font:800 17px/1.25 'Manrope',system-ui,sans-serif;letter-spacing:-.4px;margin:0 0 5px;color:var(--text)}
+.fxmeal-desc{font-size:12px;line-height:1.55;color:var(--muted);margin:0}
+.fxmeal-icon{display:grid;place-items:center;width:37px;height:37px;flex-shrink:0;border-radius:12px;background:var(--accent-dim);color:var(--accent)}
+.fxmeal-shortcuts{display:flex;flex-wrap:wrap;align-items:center;gap:9px;padding-top:11px}
+.fxmeal-shortcuts .fxmeal-action{border:1px solid var(--border);border-radius:11px;background:var(--panel-strong);color:var(--text);font-size:12px;font-weight:700;min-height:37px;padding:8px 11px;cursor:pointer}
+.fxmeal-shortcuts .fxmeal-action:hover{border-color:var(--accent)}
+.fxmeal-empty{border:1px dashed var(--border);border-radius:13px;padding:14px 16px;color:var(--muted);font-size:12px;line-height:1.65}
+.fxmeal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:13px}
+.fxmeal-card{background:var(--panel-soft);border:1px solid var(--border);border-radius:15px;padding:14px;display:flex;flex-direction:column;gap:9px;min-width:0}
+.fxmeal-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.fxmeal-name{font-size:13px;line-height:1.35;font-weight:800;overflow-wrap:anywhere;color:var(--text)}
+.fxmeal-detail{color:var(--muted);font-size:11px;line-height:1.45}
+.fxmeal-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.fxmeal-select{background:var(--input);color:var(--text);border:1px solid var(--border);border-radius:10px;font:600 11px 'DM Sans',sans-serif;padding:9px 6px;min-height:37px;flex:1;min-width:110px}
+.fxmeal-add{border:0;border-radius:10px;color:var(--accent-ink);background:var(--accent);font-size:12px;font-weight:900;min-height:37px;padding:8px 12px;cursor:pointer}
+.fxmeal-remove{display:grid;place-items:center;width:37px;height:37px;min-height:37px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--muted);cursor:pointer}
+.fxmeal-add:hover{filter:brightness(1.08)}
+.fxmeal-remove:hover{color:var(--danger);border-color:var(--danger)}
+.fxmeal-foot{margin:11px 0 0;font-size:11px;line-height:1.55;color:var(--dim)}
+.fxinsights{margin:23px 0 0}
+.fxinsights-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:13px}
+.fxinsights-head h2{font:800 18px 'Manrope',system-ui,sans-serif;letter-spacing:-.35px;margin:0;color:var(--text)}
+.fxinsights-head span{font-size:11px;color:var(--muted)}
+.fxinsights-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.fxinsights-stat{min-width:0;border:1px solid var(--border);background:var(--panel);border-radius:17px;padding:17px 16px;box-shadow:var(--shadow)}
+.fxinsights-stat .label{display:block;color:var(--muted);font-size:10px;line-height:1.5;font-weight:800;letter-spacing:.4px;text-transform:uppercase}
+.fxinsights-stat strong{font:800 26px/1.2 'Manrope',system-ui,sans-serif;letter-spacing:-.8px;display:block;color:var(--text);margin-top:11px}
+.fxinsights-stat strong small{font:600 11px 'DM Sans',system-ui,sans-serif;color:var(--muted)}
+.fxinsights-stat p{color:var(--dim);font-size:11px;line-height:1.5;margin:7px 0 0}
+.fxinsights-protein{margin-top:13px;border:1px solid var(--border);background:var(--panel);border-radius:20px;padding:20px 22px;box-shadow:var(--shadow)}
+.fxinsights-protein h3{margin:0;font:800 15px 'Manrope',sans-serif;letter-spacing:-.2px}
+.fxinsights-protein p{margin:5px 0 0;color:var(--muted);font-size:11px;line-height:1.6}
+.fxinsights-bars{display:flex;align-items:flex-end;gap:7px;height:155px;min-width:0;padding:16px 2px 0;margin-top:8px;border-bottom:1px solid var(--border)}
+.fxinsights-bar{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:5px;height:100%;position:relative}
+.fxinsights-bar i{display:block;width:min(100%,26px);height:var(--height);max-height:117px;background:linear-gradient(180deg,#cce7bb,#739375);border-radius:5px 5px 1px 1px}
+.fxinsights-bar.empty i{height:3px;background:var(--border);border:1px dashed var(--dim);opacity:.55}
+.fxinsights-bar span{font-size:9px;color:var(--dim);white-space:nowrap;line-height:1.2}
+.fxinsights-bar b{font-size:9px;color:var(--muted);font-weight:700;white-space:nowrap}
+.fxinsights-hint{color:var(--dim);font-size:11px;line-height:1.55;margin-top:14px}
+@media(max-width:850px){.fxinsights-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fxmeal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:590px){.fxmeal-section{padding:17px;border-radius:18px}.fxmeal-grid{grid-template-columns:1fr}.fxmeal-card{padding:13px}.fxmeal-title{font-size:16px}.fxinsights{margin-top:17px}.fxinsights-stat{padding:13px}.fxinsights-stat strong{font-size:23px}.fxinsights-head{display:block}.fxinsights-head span{display:block;margin-top:5px}.fxinsights-protein{padding:16px}.fxinsights-bars{gap:3px}.fxinsights-bar b{font-size:8px}.fxinsights-bar span{font-size:8px}}
+@media(max-width:360px){.fxmeal-actions{flex-wrap:wrap}.fxmeal-select{min-width:100%}.fxinsights-grid{gap:8px}}
